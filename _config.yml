@@ -1,0 +1,12 @@
+# Site-wide settings for GitHub Pages (Jekyll).
+
+title: PLACEHOLDER — Short campaign title
+description: PLACEHOLDER — One line describing the open letter.
+
+# A clean built-in GitHub Pages theme. Other options you can swap in:
+# jekyll-theme-minimal, jekyll-theme-cayman, jekyll-theme-slate, jekyll-theme-architect
+theme: jekyll-theme-minimal
+
+# Leave this as-is. It stops Jekyll trying to publish the README as a page.
+exclude:
+  - README.md
