@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================= -->
+<!-- EDIT THIS: browser-tab title and social-share description     -->
+<!-- ============================================================= -->
+<title>Save Sussex Physics</title>
+<meta name="description" content="PLACEHOLDER — One line describing the open letter.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:   #f6f2ea;
+    --ink:     #1a1916;
+    --muted:   #6b6557;
+    --accent:  #16324f;
+    --accent-2:#0e2336;
+    --hair:    #d9d2c2;
+    --row-hover:#efe9dc;
+    --maxw: 760px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader", Georgia, serif;
+    font-size:1.18rem;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    /* subtle paper texture from layered gradients */
+    background-image:
+      radial-gradient(circle at 20% -10%, rgba(22,50,79,.04), transparent 60%),
+      radial-gradient(circle at 100% 0%, rgba(120,90,40,.05), transparent 45%);
+    background-attachment:fixed;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    padding:72px 0 40px;
+    border-bottom:1px solid var(--hair);
+  }
+  .rule-top{
+    border:0; border-top:3px double var(--ink);
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .kicker{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-weight:600; font-size:.74rem; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--accent);
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:"Fraunces", serif;
+    font-weight:900; font-size:clamp(2.4rem, 6vw, 4rem);
+    line-height:1.02; letter-spacing:-.015em;
+    margin:0 0 22px; text-wrap:balance;
+  }
+  .demand{
+    font-size:clamp(1.25rem,2.6vw,1.6rem); font-weight:400;
+    color:var(--muted); margin:0 0 34px; max-width:44ch;
+    text-wrap:pretty;
+  }
+  .actions{ display:flex; flex-wrap:wrap; gap:14px 22px; align-items:center; }
+  .btn{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-weight:600; font-size:1rem; letter-spacing:.01em;
+    background:var(--accent); color:#fff; text-decoration:none;
+    padding:14px 28px; border-radius:2px;
+    transition:background .18s ease, transform .18s ease;
+    display:inline-block;
+  }
+  .btn:hover{ background:var(--accent-2); transform:translateY(-1px); }
+  .jump{
+    font-family:"IBM Plex Sans", sans-serif; font-size:.98rem;
+    color:var(--accent); text-decoration:none;
+    border-bottom:1px solid transparent; padding-bottom:1px;
+  }
+  .jump:hover{ border-bottom-color:var(--accent); }
+
+  /* ---------- Update / status banner (uncomment when needed) ---- */
+  .update{
+    margin:28px 0 0; padding:14px 18px;
+    background:rgba(22,50,79,.06); border-left:3px solid var(--accent);
+    font-size:1rem; color:var(--accent-2);
+  }
+
+  /* ---------- Letter body ---------- */
+  .letter{ padding:48px 0 16px; }
+  .letter h2{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:1.9rem; margin:48px 0 14px; letter-spacing:-.01em;
+  }
+  .letter p{ margin:0 0 20px; }
+  .letter ul{ margin:0 0 22px; padding-left:1.2em; }
+  .letter li{ margin:0 0 12px; }
+  .letter a{ color:var(--accent); text-underline-offset:3px; }
+  .letter strong{ font-weight:600; }
+
+  /* ---------- Signatories ---------- */
+  #signatories{ padding-top:40px; border-top:1px solid var(--hair); }
+
+  .search-wrap{
+    position:sticky; top:0; z-index:5;
+    background:var(--paper); padding:16px 0 12px; margin-bottom:6px;
+    border-bottom:1px solid var(--hair);
+  }
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  #sig-search{
+    width:100%; font-family:"IBM Plex Sans", sans-serif; font-size:1.02rem;
+    padding:13px 16px; color:var(--ink);
+    background:#fffdf8; border:1px solid var(--hair); border-radius:2px;
+    transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  #sig-search:focus{
+    outline:none; border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(22,50,79,.12);
+  }
+  #sig-count{
+    font-family:"IBM Plex Sans", sans-serif; font-size:.85rem;
+    letter-spacing:.04em; text-transform:uppercase; color:var(--muted);
+    margin:10px 0 0;
+  }
+
+  table{
+    width:100%; border-collapse:collapse; margin-top:18px;
+    font-size:1.04rem;
+  }
+  thead th{
+    font-family:"IBM Plex Sans", sans-serif; font-weight:600;
+    font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--muted); text-align:left;
+    padding:0 14px 10px; border-bottom:2px solid var(--ink);
+  }
+  tbody td{
+    padding:14px; vertical-align:top;
+    border-bottom:1px solid var(--hair);
+  }
+  tbody tr{ transition:background .12s ease; }
+  tbody tr:hover{ background:var(--row-hover); }
+  td.name{ font-weight:500; }
+  td.comment{ color:var(--muted); font-size:.97rem; }
+  .no-results{
+    padding:28px 4px; color:var(--muted); font-style:italic;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:64px; padding:32px 0 80px;
+    border-top:1px solid var(--hair);
+    font-family:"IBM Plex Sans", sans-serif; font-size:.86rem;
+    color:var(--muted); line-height:1.6;
+  }
+  footer a{ color:var(--accent); }
+
+  /* ---------- Responsive: stack the table on small screens ------ */
+  @media (max-width:620px){
+    body{ font-size:1.08rem; }
+    thead{ display:none; }
+    tbody, tbody tr, tbody td{ display:block; width:100%; }
+    tbody tr{ padding:16px 0; border-bottom:1px solid var(--hair); }
+    tbody tr:hover{ background:transparent; }
+    tbody td{ border:0; padding:2px 0; }
+    tbody td::before{
+      content:attr(data-label);
+      display:block;
+      font-family:"IBM Plex Sans", sans-serif; font-weight:600;
+      font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--accent); margin-bottom:2px;
+    }
+    tbody td:empty{ display:none; }
+  }
+
+  /* ---------- Page-load reveal ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{ opacity:0; transform:translateY(12px); animation:rise .7s ease forwards; }
+    .reveal:nth-child(1){ animation-delay:.05s; }
+    .reveal:nth-child(2){ animation-delay:.13s; }
+    .reveal:nth-child(3){ animation-delay:.21s; }
+    .reveal:nth-child(4){ animation-delay:.29s; }
+    @keyframes rise{ to{ opacity:1; transform:none; } }
+  }
+</style>
+</head>
+
+<body>
+
+<hr class="rule-top">
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker reveal">Open Letter</p>
+
+    <!-- ========================================================= -->
+    <!-- EDIT THIS: main heading                                    -->
+    <!-- ========================================================= -->
+    <h1 class="reveal">Open Letter to the University of Sussex in Response to its Plans for Redundancies in Physics and Astronomy</h1>
+
+    <!-- EDIT THIS: the one-line demand -->
+    <p class="demand reveal">
+We, the undersigned, call on the University of Sussex to reverse its plans to impose compulsory redundancies on academic staff in its fundamental physics groups in Experimental Particle Physics, Theoretical Particle Physics, and the Astronomy Centre.
+    </p>
+
+    <div class="actions reveal">
+      <!-- EDIT THIS: replace the # with your Google Form link -->
+      <a class="btn" href="https://forms.gle/vkmvf645AVUj1khZ6">Add your name</a>
+      <a class="jump" href="#signatories">View signatories ↓</a>
+    </div>
+
+    <!-- OPTIONAL status banner: delete the surrounding comment markers to show it.
+    <p class="update">
+      Update DD/MM/YYYY: PLACEHOLDER update text (e.g. "We have closed the letter to new signatures.").
+    </p>
+    -->
+  </div>
+</header>
+
+<main class="wrap letter">
+  <!-- ========================================================= -->
+  <!-- EDIT THIS: the full body of the letter.                    -->
+  <!-- Add as many <p> paragraphs as you like.                    -->
+  <!-- ========================================================= -->
+  <h2>Petition statement</h2>
+
+  <p>We do not accept that the University's financial position requires cuts on this scale, or cuts distributed in this way. Whatever pressures the sector faces, singling out fundamental physics for a reduction several times the institutional average is a choice, not a necessity - and it is the wrong one.</p>
+
+<p>On 28 May 2026 the University opened a consultation proposing to cut around 200 full-time-equivalent posts across the institution. <b>Within this process, every academic in the University's fundamental physics groups has been placed at risk of redundancy, with a proposed reduction of around 35 per cent of the academic staff working in Experimental Particle Physics, Theoretical Particle Physics, and the Astronomy Centre at Sussex.</b></p>
+
+<p>This is a far heavier cut than is being asked of the University as a whole, or of almost any other area within it: fundamental physics is being singled out for a reduction several times larger, in proportional terms, than the institution-wide average. The consequences now being set in motion will be felt far beyond the current budget cycle, and far beyond Sussex.</p>
+
+  <p>These proposals will cause long-lasting and, in large part, irreversible damage. In particular:</p>
+
+  <ul>
+    <li>Fundamental physics is what draws students to science. Particle physics, cosmology and astronomy are among the most powerful reasons young people choose to study physics at all. They are gateway subjects: questions about the origin of the universe and the nature of matter inspire prospective students, and feed the wider STEM pipeline. Hollowing out these areas removes precisely the part of the offer that attracts students to Sussex, with clear knock-on consequences for recruitment across the department.</li>
+    <li>Research standing is hard-won and easily lost. Sussex has built an international reputation in fundamental and applied physics over many years. That standing is a long-term asset, attracts the strongest students and staff, and signals to the world that Sussex is a serious research university. Cuts of this scale would destroy that reputation.</li>
+    <li>A cut of this scale would hollow out the department and stretch the remaining staff to breaking point. Physics is a resource-intensive subject to teach, demanding laboratory supervision, problem classes and small-group contact; removing 25 per cent of the departmental academic staff in Physics & Astronomy would drive the student-to-staff ratio to extreme levels, degrading the degree and putting Sussex at a clear disadvantage.</li>
+<li>No credible strategy behind the cuts. The proposals set out what is to be cut, but offer no vision for how Physics & Astronomy at Sussex sustains a research-intensive profile, or continues to attract students and early-career talent, once a quarter of its physics academics are gone. </li>
+<li>Talent will not return once it leaves. Compulsory redundancies at this scale signal to researchers worldwide that Sussex is not a secure place to build a scientific career. The University will lose strong researchers now and struggle for years to attract talent of the same calibre. World-class research takes a generation to build and far less than that to destroy.</li>
+<li>The UK needs distributed centres of physics excellence. A strong, geographically spread network of physics departments allows students across the country to study close to home and supplies the skilled graduates the economy depends on. The training that fundamental physics provides - in data analysis, computation, machine learning and quantitative reasoning - underpins growth areas e.g. in AI and quantum technologies. Weakening a renowned regional centre runs directly against the national interest.</li>
+<li>The decision pre-empts choices that have not yet been made. The University has linked these cuts in part to reductions in research-council (STFC) funding. Yet STFC's final spending allocations for the current budget cycle have not been confirmed. To impose permanent, irreversible redundancies before those allocations are known is to lock in damage that later funding decisions cannot undo.</li>
+  </ul>
+
+  <p>These proposals are not a proportionate response to the financial pressures the University faces, and the damage they would do to Sussex's standing in physics and beyond - and to its ability to attract students and researchers in the years ahead - would far outweigh any short-term saving. We urge the University's senior leadership to work openly with staff to identify alternatives, and to halt the compulsory redundancy process while those alternatives are explored.</p>
+
+  <p>
+    <strong>To add your name, please
+    <a href="https://forms.gle/vkmvf645AVUj1khZ6">sign here</a>.</strong>
+    Submissions are checked before they appear, so there may be a short delay.
+  </p>
+
+  <!-- ===================== SIGNATORIES ======================== -->
+  <section id="signatories">
+    <h2>Signatories</h2>
+
+    <div class="search-wrap">
+      <label class="sr-only" for="sig-search">Search signatories</label>
+      <input type="text" id="sig-search" placeholder="Search by name or institution…"
+             autocomplete="off" oninput="filterSignatories()">
+      <p id="sig-count"></p>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- EDIT THIS: add one <tr> per signatory.                -->
+    <!-- Keep the data-label attributes (used on mobile).      -->
+    <!-- Leave the comment cell empty if there isn't one.      -->
+    <!-- ===================================================== -->
+    <table id="sig-table">
+      <thead>
+        <tr><th>Name</th><th>Institution</th><th>Comment</th></tr>
+      </thead>
+      <tbody>
+<!---        <tr>
+          <td class="name" data-label="Name">PLACEHOLDER Name One</td>
+          <td data-label="Institution">PLACEHOLDER Institution</td>
+          <td class="comment" data-label="Comment">PLACEHOLDER optional comment</td>
+        </tr>
+        <tr>
+          <td class="name" data-label="Name">PLACEHOLDER Name Two</td>
+          <td data-label="Institution">PLACEHOLDER Institution</td>
+          <td class="comment" data-label="Comment"></td>
+        </tr>
+        <tr>
+          <td class="name" data-label="Name">PLACEHOLDER Name Three</td>
+          <td data-label="Institution">PLACEHOLDER Institution</td>
+          <td class="comment" data-label="Comment">PLACEHOLDER optional comment</td>
+        </tr>
+--->
+      </tbody>
+    </table>
+
+    <p id="no-results" class="no-results" hidden>No signatories match your search.</p>
+  </section>
+</main>
+
+<script>
+  function filterSignatories(){
+    var q = document.getElementById('sig-search').value.trim().toLowerCase();
+    var rows = document.querySelectorAll('#sig-table tbody tr');
+    var shown = 0;
+    rows.forEach(function(row){
+      var match = row.textContent.toLowerCase().indexOf(q) !== -1;
+      row.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    document.getElementById('sig-count').textContent =
+      shown + (shown === 1 ? ' signatory shown' : ' signatories shown');
+    document.getElementById('no-results').hidden = (shown !== 0);
+  }
+  document.addEventListener('DOMContentLoaded', filterSignatories);
+</script>
+
+</body>
+</html>
