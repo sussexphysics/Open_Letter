@@ -40,7 +40,7 @@ These proposals are not a proportionate response to the financial pressures the 
 
 
 <!-- OPTIONAL: tell people how to sign. Replace the # with your real Google Form link. -->
-**To add your name, please [sign here](#PLACEHOLDER-GOOGLE-FORM-LINK).** Submissions
+**To add your name, please [sign here](#https://forms.gle/46HkCtJpdpdaLCKN8).** Submissions
 are checked before they appear, so there may be a short delay.
 
 ## Signatories
